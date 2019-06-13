@@ -1,10 +1,9 @@
 import React from 'react';
 
-function CommentSection() {
+function CommentSection(props) {
     return (
         <div>
-          <p></p>
-          <input type='text' placeholder='add a comment..' name='comment' />
+          <p><strong>{props.commentData.username } </strong>{props.commentData.text}</p>
         </div>
     )
 };

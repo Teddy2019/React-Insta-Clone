@@ -1,6 +1,7 @@
 import React from 'react';
 import Heart from './asset/instag_heart.png';
 import Comment from './asset/instag_comment.png';
+import CommentSection from '../CommentSection/CommentSection';
 
 function PostContainer(props) {
     return (
@@ -11,7 +12,9 @@ function PostContainer(props) {
             <img src={Heart} alt='heart' />
             <img src={Comment} alt='comment' />
             <p>{props.postData.likes}<strong>likes</strong></p>
-            <CommentSection />
+            {props.postData.comments.map((comment)=>{return <CommentSection commentData={comment} />})}
+            <p>{props.postData.timestamp}</p>
+            <input type='text' placeholder='add a comment..' name='comment' />
         </div>
     )
 };
