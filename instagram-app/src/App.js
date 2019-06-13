@@ -4,13 +4,21 @@ import './App.css';
 import SearchBar from './components/SrearchBar/SearchBar';
 import PostContainer from './components/PostContainer/PostContainer';
 
-function App() {
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      dummyData: dummyData
+    };
+  }
+  render() {
   return (
     <div className="App">
       <SearchBar />
-      {dummyData.map((post) =>{return <PostContainer postData={post} key={post.id} />})}
+      {this.state.dummyData.map((post) =>{return <PostContainer postData={post} key={post.id} />})}
     </div>
   );
+  }
 }
 
 export default App;
