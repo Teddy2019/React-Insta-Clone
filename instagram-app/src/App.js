@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <SearchBar />
-      <PostContainer />
+      {dummyData.map((post) =>{return <PostContainer postData={post} />})}
     </div>
   );
 }
