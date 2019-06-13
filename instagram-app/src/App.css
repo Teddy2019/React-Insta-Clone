@@ -19,3 +19,15 @@
   padding-top: 2%;
   font-size: 1.4rem;
 }
+
+.searchbar {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  width: 20%;
+  height: 25px;
+  background-image: url(./components/SrearchBar/asset/instag_search.png)
+}
