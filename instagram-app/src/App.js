@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <SearchBar />
-      {dummyData.map((post) =>{return <PostContainer postData={post} />})}
+      {dummyData.map((post) =>{return <PostContainer postData={post} key={post.id} />})}
     </div>
   );
 }
