@@ -8,12 +8,12 @@ import instag_man from './asset/instag_man.png';
 function SearchBar() {
     return (
         <div>
-            <img src={instag_camera} />
-            <img src={instagram} />
+            <img src={instag_camera} alt='camera' />
+            <img src={instagram} alt='instagram' />
             <input type='text' placeholder='search...' name='search' />
-            <img src={instag_compas} />
-            <img src={instag_heart} />
-            <img src={instag_man} />
+            <img src={instag_compas} alt='explore' />
+            <img src={instag_heart} alt='heart' />
+            <img src={instag_man} alt='account' />
         </div>
     )
 };
