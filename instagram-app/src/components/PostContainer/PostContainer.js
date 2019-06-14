@@ -6,12 +6,12 @@ import PropTypes from 'prop-types';
 
 function PostContainer(props) {
     return (
-        <div>
+        <div className='postData'>
             <div className='ProfilData'>
               <img className='ProfiPicture' src={props.postData.thumbnailUrl} alt={props.postData.username} />
               <p className='ProfileName'> {props.postData.username} </p>  
             </div>
-            <img src={props.postData.imageUrl} alt={props.postData.username} />
+            <img className='postImag' src={props.postData.imageUrl} alt={props.postData.username} />
             <div className='likeImg' >
              <img src={Heart} alt='heart' />
              <img src={Comment} alt='comment' />   
