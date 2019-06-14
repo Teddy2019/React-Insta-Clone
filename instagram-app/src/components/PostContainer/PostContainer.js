@@ -12,14 +12,14 @@ function PostContainer(props) {
               <p className='ProfileName'> {props.postData.username} </p>  
             </div>
             <img src={props.postData.imageUrl} alt={props.postData.username} />
-            <div>
+            <div className='likeImg' >
              <img src={Heart} alt='heart' />
              <img src={Comment} alt='comment' />   
             </div>
-            <p>{props.postData.likes}<strong>likes</strong></p>
+            <p className='likes'>{props.postData.likes}<strong>likes</strong></p>
             {props.postData.comments.map((comment)=>{return <CommentSection commentData={comment} key={comment.id} />})}
-            <p>{props.postData.timestamp}</p>
-            <input type='text' placeholder='add a comment..' name='comment' />
+            <p className='time'>{props.postData.timestamp}</p>
+            <input className='commentBox' type='text' placeholder='add a comment..' name='comment' />
         </div>
     )
 };
