@@ -19,7 +19,10 @@ function PostContainer(props) {
             <p className='likes'>{props.postData.likes}<strong>likes</strong></p>
             {props.postData.comments.map((comment)=>{return <CommentSection commentData={comment} key={comment.id} />})}
             <p className='time'>{props.postData.timestamp}</p>
-            <input className='commentBox' type='text' placeholder='add a comment..' name='comment' />
+            <form>
+             <input className='commentBox' type='text' placeholder='add a comment..' name='comment' />
+             <button type='submit'>&#9863;</button>
+            </form>
         </div>
     )
 };
