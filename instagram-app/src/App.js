@@ -11,6 +11,28 @@ class App extends React.Component {
       dummyData: [],
     };
   }
+
+   addNewComment = (id, newComment) =>{ 
+
+    const newcomment ={
+         id: id,
+         comments: newComment
+    }
+    const newdummyData = this.state.dummyData.map((postObj) =>{
+      if(newcomment.id === postObj.id){ 
+        const newpostObj = {...postObj,
+          comments: newcomment.comments }
+         return  newpostObj
+        }
+        else {
+          return postObj;
+        }
+    })
+
+    this.setState({ dummyData: newdummyData });
+    
+  }
+
   componentDidMount() {
     this.setState({dummyData:dummyData})
   }
