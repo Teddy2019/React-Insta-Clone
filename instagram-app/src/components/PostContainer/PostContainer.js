@@ -4,27 +4,55 @@ import Comment from './asset/instag_comment.png';
 import CommentSection from '../CommentSection/CommentSection';
 import PropTypes from 'prop-types';
 
-function PostContainer(props) {
+class PostContainer extends React.Component {
+  constructor(props){
+    super(props);
+    this.state ={
+      postData: props.postData,
+      commentData: props.postData.comments,
+      id: '',
+      username: "teddy",
+      text: ''
+    }
+  }
+  changHandeler = (e) =>{ 
+    this.setState({text: e.target.value}) 
+  }
+
+  submitHandeler = (e) => {
+    e.preventDefault();
+    const newObject = {
+      id: Date.now(),
+      username: this.state.username,
+      text: this.state.text
+    }    
+    this.setState({commentData: [...this.state.commentData, newObject]}) 
+    this.props.addNewComment(this.props.id, this.state.commentData);
+    this.setState({text: ''}) 
+  }
+  render(){
+
     return (
         <div className='postData'>
             <div className='ProfilData'>
-              <img className='ProfiPicture' src={props.postData.thumbnailUrl} alt={props.postData.username} />
-              <p className='ProfileName'> {props.postData.username} </p>  
+              <img className='ProfiPicture' src={this.state.postData.thumbnailUrl} alt={this.state.postData.username} />
+              <p className='ProfileName'> {this.state.postData.username} </p>  
             </div>
-            <img className='postImag' src={props.postData.imageUrl} alt={props.postData.username} />
+            <img className='postImag' src={this.state.postData.imageUrl} alt={this.state.postData.username} />
             <div className='likeImg' >
              <img src={Heart} alt='heart' />
              <img src={Comment} alt='comment' />   
             </div>
-            <p className='likes'>{props.postData.likes}<strong>likes</strong></p>
-            {props.postData.comments.map((comment)=>{return <CommentSection commentData={comment} key={comment.id} />})}
-            <p className='time'>{props.postData.timestamp}</p>
-            <form>
-             <input className='commentBox' type='text' placeholder='add a comment..' name='comment' />
+            <p className='likes'>{this.state.postData.likes}<strong>likes</strong></p>
+            {this.state.commentData.map((comment)=>{return <CommentSection commentData={comment} key={comment.id} />})}
+            <p className='time'>{this.state.postData.timestamp}</p>
+            <form onSubmit={this.submitHandeler}>
+             <input className='commentBox' type='text' placeholder='add a comment..' name='comment' onChange={this.changHandeler} />
              <button type='submit'>&#9863;</button>
             </form>
         </div>
     )
+  }
 };
 
 PostContainer.propTypes = {

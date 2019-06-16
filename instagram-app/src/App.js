@@ -41,7 +41,7 @@ class App extends React.Component {
   return (
     <div className="App">
       <SearchBar />
-      {this.state.dummyData.map((post) =>{return <PostContainer postData={post} key={post.id} />})}
+      {this.state.dummyData.map((post) =>{return <PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} />})}
     </div>
   );
   }
