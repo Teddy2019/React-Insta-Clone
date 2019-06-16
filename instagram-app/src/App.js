@@ -12,6 +12,26 @@ class App extends React.Component {
     };
   }
 
+   addNewLike = (id, newLike)=> {
+     const newLikes ={
+       id: id,
+       like: newLike
+     }
+
+     const newdummyData = this.state.dummyData.map((postObj) =>{
+      if(newLikes.id === postObj.id){ 
+        const newpostObj = {...postObj,
+          likes: newLikes.like }
+         return  newpostObj
+        }
+        else {
+          return postObj;
+        }
+    })
+
+    this.setState({ dummyData: newdummyData });
+   }
+
    addNewComment = (id, newComment) =>{ 
 
     const newcomment ={
@@ -41,7 +61,8 @@ class App extends React.Component {
   return (
     <div className="App">
       <SearchBar />
-      {this.state.dummyData.map((post) =>{return <PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} />})}
+      {this.state.dummyData.map((post) =>{
+        return <PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />})}
     </div>
   );
   }

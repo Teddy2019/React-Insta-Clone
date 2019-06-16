@@ -9,14 +9,29 @@ class PostContainer extends React.Component {
     super(props);
     this.state ={
       postData: props.postData,
+      likeData: props.postData.likes,
       commentData: props.postData.comments,
       id: '',
       username: "teddy",
       text: ''
     }
   }
+
+  clickHandeler = (e) => {
+    let count = 1;
+   const mycount = function(){
+    count = count++;
+    return count;
+   }
+   const like = mycount();
+   console.log(like);/*NOT for Myself: its ok for this question since the count value return is the constant number 1. But if u want the count to change look for mycount function functionality*/
+   const likeData = this.state.likeData + like;
+   this.setState({likeData: likeData})
+   this.props.addNewLike(this.props.id, this.state.likeData)
+  }
+
   changHandeler = (e) =>{ 
-    this.setState({text: e.target.value}) 
+    this.setState({text: e.target.value}); 
   }
 
   submitHandeler = (e) => {
@@ -40,14 +55,19 @@ class PostContainer extends React.Component {
             </div>
             <img className='postImag' src={this.state.postData.imageUrl} alt={this.state.postData.username} />
             <div className='likeImg' >
-             <img src={Heart} alt='heart' />
+             <img src={Heart} onClick= {this.clickHandeler} alt='heart' />
              <img src={Comment} alt='comment' />   
             </div>
-            <p className='likes'>{this.state.postData.likes}<strong>likes</strong></p>
+            <p className='likes'>{this.state.likeData}<strong>likes</strong></p>
             {this.state.commentData.map((comment)=>{return <CommentSection commentData={comment} key={comment.id} />})}
             <p className='time'>{this.state.postData.timestamp}</p>
             <form onSubmit={this.submitHandeler}>
-             <input className='commentBox' type='text' placeholder='add a comment..' name='comment' onChange={this.changHandeler} />
+             <input className='commentBox' 
+                    type='text' 
+                    placeholder='add a comment..' 
+                    value = {this.state.text}
+                    name='comment' 
+                    onChange={this.changHandeler} />
              <button type='submit'>&#9863;</button>
             </form>
         </div>
