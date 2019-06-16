@@ -9,7 +9,28 @@ class App extends React.Component {
     super();
     this.state = {
       dummyData: [],
+      search: '',
     };
+
+    console.log(this.state.search);
+  }
+  
+  serachChangeHundeler = (e) =>{ 
+    this.setState({search: e.target.value}); 
+  }
+
+  Search = () => {
+    
+    if(this.state.search == '') {
+      const newdummyData = dummyData;
+      this.setState({ dummyData: newdummyData });
+    } 
+    else {
+    const newdummyData = this.state.dummyData.filter((post)=>{
+       return post.username === this.state.search; 
+    }) 
+    this.setState({ dummyData: newdummyData });};
+    this.setState({ search: ''})
   }
 
    addNewLike = (id, newLike)=> {
@@ -27,7 +48,7 @@ class App extends React.Component {
         else {
           return postObj;
         }
-    })
+    });
 
     this.setState({ dummyData: newdummyData });
    }
@@ -60,7 +81,7 @@ class App extends React.Component {
   render() {
   return (
     <div className="App">
-      <SearchBar />
+      <SearchBar Search={this.Search} serachChangeHundeler={this.serachChangeHundeler} />
       {this.state.dummyData.map((post) =>{
         return <PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />})}
     </div>
