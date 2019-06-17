@@ -19,7 +19,7 @@ function SearchBar(props) {
             <img src={instag_vert} alt='vertical' />
             <img src={instagram} alt='instagram' />
             <form className='search' onSubmit={submitHandeler}>
-             <input  className='search' 
+             <input  className='searchinput' 
              type='text'  name='search' 
              placeholder = 'Search... &#128269; '
              onChange={props.serachChangeHundeler} 

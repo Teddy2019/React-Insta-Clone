@@ -47,6 +47,28 @@
   height: 25px;
   margin: 0 8%;
 }
+@media (max-width: 500px) {
+  .search {
+    width: 80%;
+    padding-bottom: 1%;
+    text-align: center;
+    height: 25px;
+  }
+
+  .searchbar {
+    width: 100%;
+    margin: 3% auto;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.searchinput {
+  width: 60%;
+  padding-bottom: 1%;
+  text-align: center;
+  height: 25px;
+  margin: 0 8%;
+}
 
 .likeImg {
   width: 7%;
