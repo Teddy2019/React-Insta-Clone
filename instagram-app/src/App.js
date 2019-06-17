@@ -21,7 +21,7 @@ class App extends React.Component {
 
   Search = () => {
     
-    if(this.state.search == '') {
+    if(this.state.search === '') {
       const newdummyData = dummyData;
       this.setState({ dummyData: newdummyData });
     } 
