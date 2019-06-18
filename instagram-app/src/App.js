@@ -9,6 +9,7 @@ class App extends React.Component {
     super();
     this.state = {
       dummyData: [],
+      searchData: [],
       search: '',
     };
 
@@ -19,18 +20,18 @@ class App extends React.Component {
     this.setState({search: e.target.value}); 
   }
 
-  Search = () => {
+  search = () => {
     
-    if(this.state.search === '') {
-      const newdummyData = dummyData;
-      this.setState({ dummyData: newdummyData });
-    } 
-    else {
-    const newdummyData = this.state.dummyData.filter((post)=>{
+    if(this.state.search.length > 0) {
+      const newdummyData = this.state.dummyData.filter((post)=>{
        return post.username === this.state.search; 
     }) 
-    this.setState({ dummyData: newdummyData });};
-    this.setState({ search: ''})
+    this.setState({ searchData: newdummyData });}
+    
+    else {
+      this.setState({ searchData: dummyData });
+    }
+    //this.setState({ search: ''})
   }
 
    addNewLike = (id, newLike)=> {
@@ -79,11 +80,18 @@ class App extends React.Component {
   }
 
   render() {
+ let postcontainer;
+ if(this.state.searchData.length > 0) {
+  postcontainer = this.state.searchData.map(post => <PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />)
+  }
+else {
+  postcontainer = this.state.dummyData.map(post =><PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />)
+  }
+
   return (
     <div className="App">
-      <SearchBar Search={this.Search} serachChangeHundeler={this.serachChangeHundeler} />
-      {this.state.dummyData.map((post) =>{
-        return <PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />})}
+      <SearchBar search={this.search} serachChangeHundeler={this.serachChangeHundeler} />
+      {postcontainer }
     </div>
   );
   }

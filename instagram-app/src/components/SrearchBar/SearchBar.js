@@ -10,7 +10,7 @@ function SearchBar(props) {
     
      const submitHandeler = (e)=>{
         e.preventDefault();
-        props.Search();
+        props.search();
      }
 
     return (
