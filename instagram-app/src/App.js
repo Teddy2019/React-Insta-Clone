@@ -1,8 +1,7 @@
 import React from 'react';
 import dummyData from './dummy-data';
 import './App.css';
-import SearchBar from './components/SrearchBar/SearchBar';
-import PostContainer from './components/PostContainer/PostContainer';
+import PostsPage from './components/PostContainer/PostsPage';
 
 class App extends React.Component {
   constructor(){
@@ -13,8 +12,6 @@ class App extends React.Component {
       //searchData: [],
       search: '',
     };
-
-    console.log(this.state.search);
   }
   
   serachChangeHundeler = (e) =>{ 
@@ -101,9 +98,7 @@ class App extends React.Component {
 
   return (
     <div className="App">
-      <SearchBar  serachChangeHundeler={this.serachChangeHundeler} />
-      { this.state.dummyData.filter((post)=>{return post.username.indexOf(this.state.search) !== -1; }).map(post =><PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />)
-      }
+      <PostsPage theBigData ={this.state.dummyData} search={this.state.search} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} serachChangeHundeler={this.serachChangeHundeler} />
     </div>
   );
   }
