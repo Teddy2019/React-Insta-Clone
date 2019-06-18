@@ -1,9 +1,11 @@
 import React from 'react';
 
-const withAuthenticate = Neednewcomponent =>
+const withAuthenticate = Firstnewcomponent =>Secondnewcomponent =>
   class extends React.Component {
     render() {
-      return <Neednewcomponent />;
-    }
+        if(localStorage.getItem('username') === localStorage.getItem('password') )
+        {return <Secondnewcomponent />;}
+        else {return <Firstnewcomponent />;}
+        }
   };
   export default withAuthenticate;
