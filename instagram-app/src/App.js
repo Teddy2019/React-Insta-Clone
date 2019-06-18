@@ -9,7 +9,8 @@ class App extends React.Component {
     super();
     this.state = {
       dummyData: [],
-      searchData: [],
+      //all the uncommented one was used for the first trial of search bar works good but has some glitch.
+      //searchData: [],
       search: '',
     };
 
@@ -18,21 +19,26 @@ class App extends React.Component {
   
   serachChangeHundeler = (e) =>{ 
     this.setState({search: e.target.value}); 
+    //this.search();
   }
 
-  search = () => {
+  // search = () => {
     
-    if(this.state.search.length > 0) {
-      const newdummyData = this.state.dummyData.filter((post)=>{
-       return post.username === this.state.search; 
-    }) 
-    this.setState({ searchData: newdummyData });}
+  //    if(this.state.search.length > 0) {
+  //      const newdummyData = this.state.dummyData.filter((post)=>{
+  //       return post.username.indexOf(this.state.search) !== -1; 
+  //    }) 
+  //    this.setState({ searchData: newdummyData });}
     
-    else {
-      this.setState({ searchData: dummyData });
-    }
-    //this.setState({ search: ''})
-  }
+  //    else {
+  //      this.setState({ searchData: dummyData });
+  //    }
+
+  //   const newdummyData = this.state.dummyData.filter((post)=>{
+  //     return post.username.indexOf(this.state.search) !== -1; 
+  //  }) 
+  //  this.setState({ searchData: newdummyData })
+  // }
 
    addNewLike = (id, newLike)=> {
      const newLikes ={
@@ -80,18 +86,24 @@ class App extends React.Component {
   }
 
   render() {
- let postcontainer;
- if(this.state.searchData.length > 0) {
-  postcontainer = this.state.searchData.map(post => <PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />)
-  }
-else {
-  postcontainer = this.state.dummyData.map(post =><PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />)
-  }
+//  let postcontainer;
+//  if(this.state.searchData.length > 0) {
+//   postcontainer = this.state.searchData.map(post => <PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />)
+//   }
+// else {
+//   postcontainer = this.state.dummyData.map(post =><PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />)
+//   }
+//the js under this line was inside the js below < SearchBar .../ >
+// {this.state.searchData.length > 0 ? 
+//   (this.state.searchData.map(post => <PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />)) :
+//   (this.state.dummyData.map(post =><PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />)) 
+//   }
 
   return (
     <div className="App">
-      <SearchBar search={this.search} serachChangeHundeler={this.serachChangeHundeler} />
-      {postcontainer }
+      <SearchBar  serachChangeHundeler={this.serachChangeHundeler} />
+      { this.state.dummyData.filter((post)=>{return post.username.indexOf(this.state.search) !== -1; }).map(post =><PostContainer postData={post} key={post.id} addNewComment={this.addNewComment} addNewLike= {this.addNewLike} />)
+      }
     </div>
   );
   }

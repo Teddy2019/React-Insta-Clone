@@ -7,18 +7,19 @@ import instag_man from './asset/instag_man.png';
 import instag_vert from './asset/instag_vertical.png';
 
 function SearchBar(props) {
-    
+     // the uncommented one was used for the first trial of search bar.
      const submitHandeler = (e)=>{
         e.preventDefault();
-        props.search();
+        //props.search();
      }
+      
 
     return (
         <div className='searchbar'>
             <img src={instag_camera} alt='camera' />
             <img src={instag_vert} alt='vertical' />
             <img src={instagram} alt='instagram' />
-            <form className='search' onSubmit={submitHandeler}>
+            <form className='search' onSubmit={submitHandeler} >
              <input  className='searchinput' 
              type='text'  name='search' 
              placeholder = 'Search... &#128269; '
