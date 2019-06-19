@@ -23,7 +23,7 @@ class App extends React.Component {
   
   render() {
 
- const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)(Login);
+ const ComponentFromWithAuthenticate = withAuthenticate(Login)(PostsPage);
 
   return (
     <div className="App">
