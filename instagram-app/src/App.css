@@ -1,0 +1,101 @@
+.App {
+  text-align: left;
+  margin: auto 10%;
+}
+.postData {
+  width: 75%;
+  border: 1px solid rgb(82, 79, 79);
+  padding-left: 5%;
+  margin: 3% auto;
+  border-radius: 5%;
+  background:whitesmoke;
+}
+
+.ProfilData {
+  display: flex;
+  vertical-align: middle;
+}
+
+.ProfiPicture {
+  border-radius: 50%;
+  padding: 2%;
+  height: 60px;
+}
+
+.ProfileName {
+  width: 20%;
+  padding-top: 2%;
+  font-size: 1.4rem;
+}
+
+.postImag {
+  width: 80%;
+  margin-bottom: 1%;
+}
+
+.searchbar {
+  width: 80%;
+  margin: 3% auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  width: 40%;
+  padding-bottom: 1%;
+  text-align: center;
+  height: 25px;
+  margin: 0 8%;
+}
+@media (max-width: 500px) {
+  .search {
+    width: 80%;
+    padding-bottom: 1%;
+    text-align: center;
+    height: 25px;
+  }
+
+  .searchbar {
+    width: 100%;
+    margin: 3% auto;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.searchinput {
+  width: 60%;
+  padding-bottom: 1%;
+  text-align: center;
+  height: 25px;
+  margin: 0 8%;
+}
+
+.likeImg {
+  width: 7%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2%;
+}
+
+.likes {
+  margin-left: 2%;
+}
+
+.time {
+  margin-left: 2%;
+}
+
+.commentBox {
+  width: 60%;
+  height: 30px;
+  margin-left: 2%;
+  border-radius: 2%;
+  margin-bottom: 3%;
+}
+.comments {
+  margin-left: 2%;
+}
+
+li {
+  list-style-type: none;
+}
